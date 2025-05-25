@@ -104,4 +104,4 @@ Even small changes can lead to big improvements in digital wellbeing.
         else:
             st.success("Your wellbeing looks good! Keep maintaining healthy digital habits.")
     else:
-        st.info("You haven't made a prediction yet. Please go to the **Prediction** page.")
+        st.info("You haven't made a prediction yet. Please go to the **Prediction** page")
