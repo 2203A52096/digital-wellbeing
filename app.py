@@ -11,12 +11,17 @@ st.set_page_config(page_title="Digital Wellbeing Analyzer", page_icon="🧘‍�
 # Custom CSS for styling
 st.markdown("""
     <style>
+    /* Set entire app background to white */
+    .main {
+        background-color: white !important;
+    }
+    /* Align the main title (h1) to the left */
     /* Main title styling */
     .title {
         font-size: 3rem;
         font-weight: 700;
         color: #2c3e50;
-        text-align: center;
+        text-align: left;
         margin-bottom: 1rem;
     }
     /* Sidebar background */
