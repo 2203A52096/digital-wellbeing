@@ -9,63 +9,62 @@ with open('model.pkl', 'rb') as f:
 st.set_page_config(page_title="Digital Wellbeing Analyzer", page_icon="🧘‍♂️")
 
 # Custom CSS for styling
-st.markdown("""
-<style>
-/* Align main title to the left and add spacing */
-h1 {
-    text-align: left !important;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-}
-
-/* Set entire app background to white */
-.main {
-    background-color: white !important;
-}
-
-/* Tip card base styles */
-.tip-card {
-    border-radius: 10px;
-    padding: 15px 20px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: background-color 0.3s ease;
-    font-weight: 500;
-}
-
-/* Tip color variants */
-.tip-blue   { background: #1e3a8a; color: #f1f5f9; }
-.tip-yellow { background: #facc15; color: #1f2937; }
-.tip-green  { background: #10b981; color: #f0fdf4; }
-.tip-red    { background: #ef4444; color: #fff5f5; }
-.tip-purple { background: #8b5cf6; color: #f3e8ff; }
-.tip-teal   { background: #14b8a6; color: #ecfeff; }
-
-/* Headings inside cards */
-.tip-card h3 {
-    margin-top: 0;
-    font-weight: bold;
-}
-
-/* Colored headers for score interpretations */
-.excellent { color: #27ae60; font-weight: 600; }
-.good { color: #2980b9; font-weight: 600; }
-.average { color: #f39c12; font-weight: 600; }
-.low { color: #c0392b; font-weight: 600; }
-
-/* Button styling */
-.stButton>button {
-    background-color: #2980b9;
-    color: white;
-    font-weight: 600;
-    border-radius: 8px;
-    padding: 10px 20px;
-}
-.stButton>button:hover {
-    background-color: #3498db;
-    color: #fff;
-}
-</style>
+ st.markdown("""
+    <style>
+    /* Main title styling */
+    .title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    /* Sidebar background */
+    .sidebar .sidebar-content {
+        background-color: #f0f2f6;
+    }
+    /* Tips card with darker, neutral background for light/dark mode */
+    .tip-card {
+        background: #3a3f44;  /* Dark gray - good for dark mode */
+        color: #e1e4e8;       /* Light gray text */
+        border-radius: 10px;
+        padding: 15px 20px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: background-color 0.3s ease;
+    }
+    .tip-card h3 {
+        color: #f5f6f7; /* Slightly brighter heading */
+    }
+    /* Light mode overrides */
+    @media (prefers-color-scheme: light) {
+        .tip-card {
+            background: #dcdde1;
+            color: #2f3640;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .tip-card h3 {
+            color: #273c75;
+        }
+    }
+    /* Colored headers for score interpretations */
+    .excellent { color: #27ae60; font-weight: 600; }
+    .good { color: #2980b9; font-weight: 600; }
+    .average { color: #f39c12; font-weight: 600; }
+    .low { color: #c0392b; font-weight: 600; }
+    /* Button styling */
+    .stButton>button {
+        background-color: #2980b9;
+        color: white;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 10px 20px;
+    }
+    .stButton>button:hover {
+        background-color: #3498db;
+        color: #fff;
+    }
+    </style>
 """, unsafe_allow_html=True)
 
 
