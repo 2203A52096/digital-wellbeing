@@ -2,44 +2,52 @@ import streamlit as st
 import numpy as np
 import pickle
 
-# Load model
-with open('model.pkl', 'rb') as f:
+# Load the trained model
+with open("model.pkl", "rb") as f:
     model = pickle.load(f)
 
-st.set_page_config(page_title="Digital Wellbeing App", layout="centered")
+st.set_page_config(page_title="Digital Wellbeing Analyzer", layout="centered")
 
-st.title("Digital Wellbeing Analyzer")
+# Sidebar navigation
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ["Home - Tips", "Prediction", "What to Do"])
 
-# Tabs for navigation
-tab1, tab2, tab3 = st.tabs(["Home", "Prediction", "What to Do"])
+st.title("🧠 Digital Wellbeing Analyzer")
 
-# 1. Home Tab – Tips on Digital Wellbeing
-with tab1:
-    st.header("Tips for Improving Digital Wellbeing")
+# Home Page with Digital Wellbeing Tips
+if page == "Home - Tips":
+    st.header("💡 Tips for Digital Wellbeing (With Resources)")
     st.markdown("""
-    ### 1. Limit Screen Time  
-    Avoid excessive screen exposure. Try the 20-20-20 rule: every 20 minutes, look 20 feet away for 20 seconds.
+### 1. Limit Screen Time  
+Set app time limits and take regular screen breaks.  
+**Source:** World Health Organization
 
-    ### 2. Reduce Notifications  
-    Disable non-essential app notifications to minimize distractions.
+### 2. Reduce Notifications  
+Disable non-essential app notifications to reduce stress.  
+**Source:** Harvard Business Review
 
-    ### 3. Prioritize Sleep  
-    Aim for 7–9 hours of sleep. Avoid using screens at least 30 minutes before bedtime.
+### 3. Prioritize Sleep  
+Avoid screens before bedtime and aim for 7–9 hours of sleep.  
+**Source:** CDC
 
-    ### 4. Use Focus Tools  
-    Use tools like Pomodoro timers or website blockers to improve focus and reduce multitasking.
+### 4. Use Focus Tools  
+Pomodoro timers or app blockers help maintain concentration.  
+**Source:** RescueTime
 
-    ### 5. Monitor Mood and Anxiety  
-    Reflect daily. Use mental wellness apps or journaling.
+### 5. Monitor Mood & Anxiety  
+Use mental health apps or journaling to track emotions.  
+**Source:** National Alliance on Mental Illness (NAMI)
 
-    ### 6. Take Social Media Breaks  
-    Set app limits or schedule “no social media” hours or weekends.
-    """)
+### 6. Social Media Detox  
+Take regular breaks from social platforms.  
+**Source:** Psychology Today
+""")
 
-# 2. Prediction Tab – Input form and prediction
-with tab2:
-    st.header("Predict Your Digital Wellbeing Score")
+# Prediction Page
+elif page == "Prediction":
+    st.header("📊 Predict Your Digital Wellbeing Score")
 
+    # Input fields
     sleep_hours = st.number_input("Sleep Hours", min_value=0.0, max_value=24.0, value=7.0)
     focus_score = st.slider("Focus Score (0 to 10)", 0.0, 10.0, 5.0)
     mood_score = st.slider("Mood Score (0 to 10)", 0.0, 10.0, 5.0)
@@ -49,35 +57,51 @@ with tab2:
     notification_count = st.number_input("Notification Count", min_value=0, max_value=1000, value=100)
     anxiety_level = st.slider("Anxiety Level (0 to 10)", 0.0, 10.0, 5.0)
 
-    if st.button("Predict Score"):
+    if st.button("📈 Predict Score"):
         input_data = np.array([[sleep_hours, focus_score, mood_score, num_app_switches,
                                 daily_screen_time_min, social_media_time_min,
                                 notification_count, anxiety_level]])
         prediction = model.predict(input_data)[0]
-        st.subheader("Predicted Digital Wellbeing Score:")
-        st.success(f"{prediction:.2f}")
+        st.success(f"Your predicted Digital Wellbeing Score is: **{prediction:.2f}**")
+
+        # Store in session state for next page use
         st.session_state["latest_score"] = prediction
 
-# 3. What to Do Tab – Recommendations based on score
-with tab3:
-    st.header("What to Do if Your Digital Wellbeing is Low")
+        # Interpretation based on descriptive statistics
+        if prediction >= 56.6:
+            st.info("✅ Excellent Digital Wellbeing")
+        elif prediction >= 51.0:
+            st.info("🟢 Good Digital Wellbeing")
+        elif prediction >= 46.8:
+            st.warning("🟡 Average - Some improvement needed")
+        else:
+            st.error("🔴 Low - Digital wellbeing needs attention")
+
+# What to Do if Score is Low
+elif page == "What to Do":
+    st.header("🛠️ What to Do If Your Score Is Low")
 
     score = st.session_state.get("latest_score", None)
 
     if score is not None:
         st.write(f"Your last predicted score: **{score:.2f}**")
-        if score < 5:
-            st.warning("Your digital wellbeing score seems low. Consider these steps:")
+
+        if score < 46.8:
+            st.warning("Your digital wellbeing score is low. Here’s what you can do:")
             st.markdown("""
-            ### Actions to Take:
-            - **Improve Sleep Quality:** Maintain consistent sleep routines and limit screens before bed.
-            - **Manage Anxiety:** Try relaxation techniques, therapy, or meditation apps.
-            - **Limit Screen Time:** Use screen time apps to track and reduce excessive usage.
-            - **Reduce App Switching:** Focus on one task at a time.
-            - **Control Notifications:** Turn off unnecessary alerts to stay calm and focused.
-            - **Seek Help:** Don’t hesitate to talk to a mental health professional.
-            """)
+### Immediate Actions:
+- Improve your **sleep schedule**
+- Reduce **screen time**, especially before bed
+- Take **social media breaks**
+- Turn off **non-essential notifications**
+- Try **breathing, journaling, or mindfulness apps**
+- Seek help from a **mental health counselor**
+
+Even small changes can lead to big improvements in digital wellbeing.
+""")
+        elif score < 51.0:
+            st.info("You're in the average range. Try improving some habits like focus and screen time.")
         else:
-            st.success("Your digital wellbeing score looks healthy! Keep following good habits.")
+            st.success("Your wellbeing looks good! Keep maintaining healthy digital habits.")
     else:
-        st.info("No prediction made yet. Visit the Prediction tab to get started.")
+        st.info("You haven't made a prediction yet. Please go to the **Prediction** page.")
