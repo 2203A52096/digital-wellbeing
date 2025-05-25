@@ -9,7 +9,7 @@ with open('model.pkl', 'rb') as f:
 st.set_page_config(page_title="Digital Wellbeing Analyzer", page_icon="🧘‍♂️")
 
 # Custom CSS for styling
- st.markdown("""
+st.markdown("""
     <style>
     /* Main title styling */
     .title {
