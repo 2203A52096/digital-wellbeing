@@ -19,7 +19,8 @@ st.markdown("""
 
     /* Sidebar styling */
     [data-testid="stSidebar"] {
-        background-color: #f0f2f6;
+        color: #cccccc; 
+
     }
 
     /* Headings */
