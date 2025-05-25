@@ -1,4 +1,4 @@
-# digital-wellbeing
+# Digital-wellbeing
 
 ## Mental Health and Digital Behavior 
 
@@ -84,3 +84,12 @@ Used _RandomForestRegressor.feature_importances__ to rank the importance of each
 
 ---
 
+### Solution 
+
+A Streamlit web app that helps understand and improve digital wellbeing.
+
+## Features
+
+- **Home - Tips**: Learn helpful tips for reducing screen time, improving sleep, and managing digital habits.
+- **Prediction**: Enter your daily habits like sleep hours, screen time, mood, and so on to get a Digital Wellbeing Score.
+- **What to Do**: Based on your score, get suggestions on how to improve your digital wellbeing.
