@@ -6,7 +6,7 @@ import pickle
 with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
 
-st.set_page_config(page_title="Digital Wellbeing Analyzer", layout="centered", page_icon="🧘‍♂️")
+st.set_page_config(page_title="Digital Wellbeing Analyzer", page_icon="🧘‍♂️")
 
 # Custom CSS for styling
 st.markdown("""
