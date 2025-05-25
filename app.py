@@ -19,17 +19,33 @@ st.markdown("""
         text-align: center;
         margin-bottom: 1rem;
     }
-    /* Sidebar title */
+    /* Sidebar background */
     .sidebar .sidebar-content {
         background-color: #f0f2f6;
     }
-    /* Card style for tips */
+    /* Tips card with darker, neutral background for light/dark mode */
     .tip-card {
-        background: #eaf4fc;
+        background: #3a3f44;  /* Dark gray - good for dark mode */
+        color: #e1e4e8;       /* Light gray text */
         border-radius: 10px;
         padding: 15px 20px;
         margin-bottom: 15px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: background-color 0.3s ease;
+    }
+    .tip-card h3 {
+        color: #f5f6f7; /* Slightly brighter heading */
+    }
+    /* Light mode overrides */
+    @media (prefers-color-scheme: light) {
+        .tip-card {
+            background: #dcdde1;
+            color: #2f3640;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .tip-card h3 {
+            color: #273c75;
+        }
     }
     /* Colored headers for score interpretations */
     .excellent { color: #27ae60; font-weight: 600; }
@@ -50,6 +66,7 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 # Sidebar navigation
 st.sidebar.title("Navigation")
