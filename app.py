@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 
 # Load the trained model
-with open("model.pkl", "rb") as f:
+with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
 
 st.set_page_config(page_title="Digital Wellbeing Analyzer", layout="centered")
