@@ -59,32 +59,32 @@ if page == "Home - Tips":
     st.markdown("""
 ### 1. Limit Screen Time  
 Set app time limits and take regular screen breaks.  
-**Source:** World Health Organization
+**Source:** World Health Organization.
 """)
     st.markdown("""
 ### 2. Reduce Notifications  
 Disable non-essential app notifications to reduce stress.  
-**Source:** Harvard Business Review
+**Source:** Harvard Business Review.
 """)
     st.markdown("""
 ### 3. Prioritize Sleep  
 Avoid screens before bedtime and aim for 7–9 hours of sleep.  
-**Source:** CDC
+**Source:** CDC.
 """)
     st.markdown("""
 ### 4. Use Focus Tools  
 Pomodoro timers or app blockers help maintain concentration.  
-**Source:** RescueTime
+**Source:** RescueTime.
 """)
     st.markdown("""
 ### 5. Monitor Mood & Anxiety  
 Use mental health apps or journaling to track emotions.  
-**Source:** National Alliance on Mental Illness (NAMI)
+**Source:** National Alliance on Mental Illness (NAMI).
 """)
     st.markdown("""
 ### 6. Social Media Detox  
 Take regular breaks from social platforms.  
-**Source:** Psychology Today
+**Source:** Psychology Today.
 """)
     st.markdown('</div>', unsafe_allow_html=True)
 
