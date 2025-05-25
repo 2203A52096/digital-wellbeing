@@ -16,7 +16,7 @@ st.markdown("""
         font-size: 3rem;
         font-weight: 700;
         color: #2c3e50;
-        text-align: center;
+        text-align: left;
         margin-bottom: 1rem;
     }
     /* Sidebar background */
