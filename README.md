@@ -6,7 +6,7 @@ The dataset is taken from kaggle from https://www.kaggle.com/datasets/atharvasou
 
 ### Problem Statement
 
-The goal of this project is to **predict a user's `digital_wellbeing_score`** based on various features like:
+The goal of this project is to **predict a user's _digital_wellbeing_score_** based on various features like:
 
 * screen time
 * social media usage
@@ -23,27 +23,27 @@ This helps in understanding how digital behavior affects mental wellness and can
 
 #### 1. **Data Reading**
 
-* The dataset (`mental_health_digital_behavior_data.csv`) is loaded using `pandas`.
+* The dataset (_mental_health_digital_behavior_data.csv_) is loaded using _pandas_.
 * It contains **500 rows** of user behavior and mental health scores from 2020–2024.
 
 #### 2. **Data Exploration**
 
-* Use `.info()`, `.describe()` and `.head()` to understand data types, ranges, and structure.
+* Use _.info()_, _.describe()_ and _.head()_ to understand data types, ranges, and structure.
 * Checked for null values or data inconsistencies.
 
 #### 3. **Data Visualization**
 
 * **Box plots** and **scatter plots** were used to inspect distributions and detect outliers.
-* `seaborn` and `matplotlib` were used for visualizations.
+* _seaborn_ and _matplotlib_ were used for visualizations.
 
 #### 4. **Correlation Analysis**
 
-* Used `.corr()` to analyze correlation of features with `digital_wellbeing_score`.
+* Used _.corr()_ to analyze correlation of features with _digital_wellbeing_score_.
 * Found that **anxiety\_level** was strongly negatively correlated.
 
 #### 5. **Feature Selection**
 
-* Selected all features except the target (`digital_wellbeing_score`) for training.
+* Selected all features except the target (_digital_wellbeing_score_) for training.
 
 #### 6. **Data Preprocessing**
 
@@ -60,7 +60,7 @@ Trained multiple regression models:
 * **Support Vector Regressor (SVR)**
 * **K-Nearest Neighbors Regressor (KNN)**
 
-Used `train_test_split` to divide data into 80% training and 20% testing sets.
+Used _train_test_split_ to divide data into 80% training and 20% testing sets.
 
 #### 8. **Model Evaluation**
 
@@ -72,11 +72,11 @@ Evaluated all models using:
 
 #### 9. **Feature Importance**
 
-Used `RandomForestRegressor.feature_importances_` to rank the importance of each input variable in prediction.
+Used _RandomForestRegressor.feature_importances__ to rank the importance of each input variable in prediction.
 
 ---
 
-### 📊 Results Summary
+### Results Summary
 
 * **Linear Regression** is overfitting (R² ≈ 1.00).
 * **Random Forest and XGBoost** performed well, showing robust predictions.
