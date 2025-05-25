@@ -30,8 +30,9 @@ st.markdown("""
     }
     /* Tips card with darker, neutral background for light/dark mode */
     .tip-card {
-        background: #3a3f44;  /* Dark gray - good for dark mode */
-        color: #e1e4e8;       /* Light gray text */
+background: #2f3542;  /* Sleek dark slate blue-gray */
+color: #f1f2f6;       /* Softer light gray for text */
+
         border-radius: 10px;
         padding: 15px 20px;
         margin-bottom: 15px;
