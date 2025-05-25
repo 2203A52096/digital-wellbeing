@@ -12,11 +12,11 @@ st.set_page_config(page_title="Digital Wellbeing Analyzer", layout="centered")
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home - Tips", "Prediction", "What to Do"])
 
-st.title("🧠 Digital Wellbeing Analyzer")
+st.title("Digital Wellbeing Analyzer")
 
 # Home Page with Digital Wellbeing Tips
 if page == "Home - Tips":
-    st.header("💡 Tips for Digital Wellbeing (With Resources)")
+    st.header(" Tips for Digital Wellbeing (With Resources)")
     st.markdown("""
 ### 1. Limit Screen Time  
 Set app time limits and take regular screen breaks.  
@@ -45,7 +45,7 @@ Take regular breaks from social platforms.
 
 # Prediction Page
 elif page == "Prediction":
-    st.header("📊 Predict Your Digital Wellbeing Score")
+    st.header("Predict Your Digital Wellbeing Score")
 
     # Input fields
     sleep_hours = st.number_input("Sleep Hours", min_value=0.0, max_value=24.0, value=7.0)
@@ -57,7 +57,7 @@ elif page == "Prediction":
     notification_count = st.number_input("Notification Count", min_value=0, max_value=1000, value=100)
     anxiety_level = st.slider("Anxiety Level (0 to 10)", 0.0, 10.0, 5.0)
 
-    if st.button("📈 Predict Score"):
+    if st.button(" Predict Score"):
         input_data = np.array([[sleep_hours, focus_score, mood_score, num_app_switches,
                                 daily_screen_time_min, social_media_time_min,
                                 notification_count, anxiety_level]])
@@ -68,25 +68,25 @@ elif page == "Prediction":
         st.session_state["latest_score"] = prediction
 
         # Interpretation based on descriptive statistics
-        if prediction >= 56.6:
-            st.info("✅ Excellent Digital Wellbeing")
-        elif prediction >= 51.0:
-            st.info("🟢 Good Digital Wellbeing")
-        elif prediction >= 46.8:
-            st.warning("🟡 Average - Some improvement needed")
+        if prediction >= 65:
+            st.info(" Excellent Digital Wellbeing")
+        elif prediction >= 50:
+            st.info(" Good Digital Wellbeing")
+        elif prediction >= 40:
+            st.warning(" Average - Some improvement needed")
         else:
-            st.error("🔴 Low - Digital wellbeing needs attention")
+            st.error(" Low - Digital wellbeing needs attention")
 
 # What to Do if Score is Low
 elif page == "What to Do":
-    st.header("🛠️ What to Do If Your Score Is Low")
+    st.header(" What to Do If Your Score Is Low")
 
     score = st.session_state.get("latest_score", None)
 
     if score is not None:
         st.write(f"Your last predicted score: **{score:.2f}**")
 
-        if score < 46.8:
+        if score < 40:
             st.warning("Your digital wellbeing score is low. Here’s what you can do:")
             st.markdown("""
 ### Immediate Actions:
@@ -99,7 +99,7 @@ elif page == "What to Do":
 
 Even small changes can lead to big improvements in digital wellbeing.
 """)
-        elif score < 51.0:
+        elif score < 50:
             st.info("You're in the average range. Try improving some habits like focus and screen time.")
         else:
             st.success("Your wellbeing looks good! Keep maintaining healthy digital habits.")
